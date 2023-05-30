@@ -1,5 +1,7 @@
 import os
+import ast
 import math
+import bcrypt
 import getpass
 
 class OperationsManager():
@@ -36,13 +38,15 @@ def login_success():
     print(ops_manager.perform_addition())
  
     expression = input('Enter a mathematical formula to calculate: ')
-    print ("Result: ", eval(expression))
+    print ("Result: ", ast.literal_eval(expression))
 
 
 if __name__ == "__main__":
     user = input("Username: ")
     password = getpass.getpass("Password: ")
-    if user != "root" or password != "123":
+    bytes = password.encode('utf-8')
+    salt = bcrypt.gensalt()
+    if user != "root" or bcrypt.hashpw(bytes, b'$2b$12$9s7Qoqmix79BtZ.WZ4ISKe') != b'$2b$12$9s7Qoqmix79BtZ.WZ4ISKeIY/HdvPy4JfpQqZ34V.KMl63B3/mdrm':
         print("Wrong username or password!")
         exit(0)
     else:
