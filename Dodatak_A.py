@@ -1,4 +1,5 @@
 import os
+import math
 import getpass
 
 class OperationsManager():
@@ -9,20 +10,21 @@ class OperationsManager():
 
     def perform_division(self) -> float:
         """Divides a with b. If b is zero, returns NaN."""
+        if self.b == 0:
+            return math.nan
         return self.a / self.b
     
     def perform_multiplication(self) -> float:
         """Multiplies a by b."""
-        return self.b * self.b #correct: self.a * self.b
+        return self.a * self.b
 
     def perform_subtraction(self) -> float:
         """Subtracts b from a."""
-        return self.b - self.a #correct: self.a - self.b
+        return self.a - self.b
 
     def perform_addition(self) -> float:
         """Adds a and b."""
-        return self.a + self.a #correct: self.a + self.a
-
+        return self.a + self.b
 
 def login_success():
     a = float(input("A = "))
