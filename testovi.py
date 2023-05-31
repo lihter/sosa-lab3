@@ -30,4 +30,9 @@ class OperationsManagerTestCase(unittest.TestCase):
         self.assertEqual(calculated_value, 16)
 
 if __name__ == '__main__':
-    unittest.main()
+    suite = unittest.TestLoader().loadTestsFromTestCase(OperationsManagerTestCase)
+    results = unittest.TestResult()
+    suite.run(results)
+    if (len(results.errors) == 0 and len(results.failures) == 0):
+        exit(0)
+    exit(1)

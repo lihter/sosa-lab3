@@ -45,7 +45,6 @@ if __name__ == "__main__":
     user = input("Username: ")
     password = getpass.getpass("Password: ")
     bytes = password.encode('utf-8')
-    salt = bcrypt.gensalt()
     if user != "root" or bcrypt.hashpw(bytes, b'$2b$12$9s7Qoqmix79BtZ.WZ4ISKe') != b'$2b$12$9s7Qoqmix79BtZ.WZ4ISKeIY/HdvPy4JfpQqZ34V.KMl63B3/mdrm':
         print("Wrong username or password!")
         exit(0)
